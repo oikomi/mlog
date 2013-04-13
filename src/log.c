@@ -24,9 +24,10 @@ creatlog(const char *name,  int option, int en_level) {
     logoptions logoption;
 
     /* Generate log file path and file name */
-    char base_name[] = "/home/yueyang/.log/";
-    size_t name_size = strlen(base_name);
-    name_size += strlen(name);
+    //char base_name[] = "/tmp/";
+    //size_t name_size = strlen(base_name);
+    //printf("%d\n",name_size );
+    size_t name_size = strlen(name);
     ++name_size;
 
     if (name_size > MAX_NAME_SIZE) {
@@ -39,10 +40,11 @@ creatlog(const char *name,  int option, int en_level) {
     }
     memset(file_name, 0, name_size);
 
-    snprintf(file_name, name_size, "%s%s", base_name, name);
+    snprintf(file_name, name_size, "%s", name);
 
     /* Creat file or cut exist file length */
-    int fd = creat(file_name, S_IRUSR | S_IWUSR);
+    //int fd = creat(file_name, S_IRUSR | S_IWUSR);
+    int fd = open(file_name, O_RDWR | O_APPEND | O_CREAT); 
     if (ERROR_NO == fd) {
         fprintf(stderr, "%s\n", strerror(errno) );
         exit(errno);

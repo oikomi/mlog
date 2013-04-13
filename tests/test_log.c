@@ -22,7 +22,7 @@ int
 main ( int argc, char *argv[] ) {
     logoptions tmp;
 
-    tmp = creatlog("yue", 1, LOG_DEBUG);
+    tmp = creatlog("/tmp/mlog", 1, LOG_DEBUG);
 
     pid_t pid;
 
